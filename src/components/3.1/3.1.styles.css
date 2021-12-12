@@ -1,0 +1,16 @@
+div {
+	width: 80%;
+	height: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 2rem 0;
+	margin: 1rem 0;
+}
+.main-box {
+	height: 60vh;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
