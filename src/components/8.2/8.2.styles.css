@@ -1,0 +1,16 @@
+.box {
+	background: chartreuse;
+	margin: 0.5rem;
+	transform: translateX(-120%);
+}
+.slide-animation {
+	animation: slide 1s ease 1 forwards;
+}
+@keyframes slide {
+	from {
+		transform: translateX(-120%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}

@@ -1,0 +1,53 @@
+.full_circle {
+	width: 200px;
+	height: 200px;
+	border: solid 5px gray;
+	border-bottom-color: cyan;
+	border-radius: 50%;
+	animation: Circle 1s forwards linear infinite;
+}
+.ghost_circle {
+	width: 200px;
+	height: 200px;
+	border: solid 5px transparent;
+	border-bottom-color: cyan;
+	border-right: 5px;
+	border-radius: 50%;
+	animation: Circle 1s forwards linear infinite;
+}
+.color-dots {
+	display: flex;
+}
+.color-dots > div {
+	width: 30px;
+	height: 30px;
+	background-color: gray;
+	border-radius: 50%;
+	margin: 20px;
+}
+.dot-1 {
+	animation: Dot 2s forwards linear infinite;
+}
+.dot-2 {
+	animation: Dot 2s forwards 0.5s linear infinite;
+}
+.dot-3 {
+	animation: Dot 2s forwards 1s linear infinite;
+}
+
+@keyframes Circle {
+	from {
+		transform: rotateZ(0deg);
+	}
+	to {
+		transform: rotateZ(360deg);
+	}
+}
+@keyframes Dot {
+	10% {
+		background-color: cyan;
+	}
+	40% {
+		background-color: gray;
+	}
+}
