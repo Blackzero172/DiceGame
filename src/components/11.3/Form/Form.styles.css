@@ -1,0 +1,20 @@
+form,
+form div {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+}
+form div {
+	width: unset;
+}
+form input,
+form textarea {
+	width: 100%;
+	margin: 1rem;
+	display: block;
+}
+.display-none {
+	display: none;
+}
