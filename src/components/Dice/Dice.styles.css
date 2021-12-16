@@ -1,0 +1,24 @@
+.number1 {
+	background: url("assets/img/dice-1.png") no-repeat center center/cover;
+}
+.number2 {
+	background: url("assets/img/dice-2.png") no-repeat center center/cover;
+}
+.number3 {
+	background: url("assets/img/dice-3.png") no-repeat center center/cover;
+}
+.number4 {
+	background: url("assets/img/dice-4.png") no-repeat center center/cover;
+}
+.number5 {
+	background: url("assets/img/dice-5.png") no-repeat center center/cover;
+}
+.number6 {
+	background: url("assets/img/dice-6.png") no-repeat center center/cover;
+}
+#dice1,
+#dice2 {
+	width: 50px;
+	height: 50px;
+	border: 1px solid black;
+}
