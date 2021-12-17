@@ -18,7 +18,12 @@
 }
 #dice1,
 #dice2 {
-	width: 50px;
-	height: 50px;
+	width: 200px;
+	height: 200px;
 	border: 1px solid black;
+	transition: all 0.2s ease;
+	margin-bottom: 6rem;
+}
+.dice-container button {
+	margin: 0.5rem 0;
 }

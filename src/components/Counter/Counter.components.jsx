@@ -1,4 +1,5 @@
 import React from "react";
+import "./Counter.styles.css";
 class Counter extends React.Component {
 	render() {
 		const { playerNumber, isTemp } = this.props;
@@ -6,9 +7,9 @@ class Counter extends React.Component {
 		const counterText = isTemp ? `Temp Score:` : `Total Score:`;
 		return (
 			<div className={counterClass}>
-				<p>
+				<h3>
 					{counterText} {this.props.score}
-				</p>
+				</h3>
 			</div>
 		);
 	}

@@ -1,4 +1,152 @@
+@import url("https://fonts.googleapis.com/css2?family=Nixie+One&display=swap");
+:root {
+	--main-color: #26ffff;
+	--secondary-color: #333;
+}
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Nixie One";
+}
+body {
+	background: var(--secondary-color);
+}
 .player-1,
 .player-2 {
-	border: 2px solid red;
+	border: 2px solid var(--main-color);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	transition: all 0.5s ease;
+}
+.landing-page {
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	top: 0;
+	background-color: #3338;
+	backdrop-filter: blur(2px);
+	opacity: 1;
+	transition: all 0.75s ease;
+}
+.landing-page h3 {
+	color: #fff;
+}
+.landing-page input {
+	width: 15%;
+	height: 5vh;
+	background: var(--secondary-color);
+	color: var(--main-color);
+	margin: 1rem;
+}
+.landing-page input::placeholder {
+	font-size: 1rem;
+	color: var(--main-color);
+	font-style: bold;
+}
+.landing-page input:focus {
+	outline: none;
+}
+.game-container {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100vh;
+}
+.game-container > div {
+	width: 100%;
+}
+.dice-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 100%;
+	margin-bottom: 1rem;
+}
+.dice-container .container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	margin: 1rem 0;
+	filter: invert(100%) brightness(200%);
+}
+.settings-container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+.active-turn {
+	background-color: var(--main-color);
+	color: var(--secondary-color);
+}
+.popup-message {
+	width: 20%;
+	height: 20vh;
+	background-color: #fff;
+	border: 2px solid var(--main-color);
+	position: absolute;
+	left: 40%;
+	top: 2%;
+	opacity: 1;
+	transition: all 1s ease;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: black;
+}
+.transform-y {
+	transform: translateY(-120%);
+}
+.animation-container {
+	animation: diceRoll 0.5s ease 1 forwards;
+}
+@keyframes diceRoll {
+	0% {
+		transform: initial;
+	}
+	100% {
+		transform: rotate(180deg);
+	}
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+.opacity-hidden {
+	opacity: 0;
+}
+.z-position {
+	z-index: -100;
+}
+button {
+	background: transparent;
+	border: 1px;
+	color: #fff;
+	border-radius: 4px;
+	border: transparent 2px solid;
+	font-size: 2rem;
+}
+button:hover {
+	background: #26ffff99;
+	border-color: #fff;
+}
+i {
+	color: var(--main-color);
 }
