@@ -77,7 +77,6 @@ body {
 	display: flex;
 	justify-content: center;
 	margin: 1rem 0;
-	filter: invert(100%) brightness(200%);
 }
 .settings-container {
 	display: flex;
@@ -137,7 +136,6 @@ input[type="number"] {
 }
 button {
 	background: transparent;
-	border: 1px;
 	color: #fff;
 	border-radius: 4px;
 	border: transparent 2px solid;

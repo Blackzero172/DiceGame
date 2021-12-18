@@ -20,9 +20,9 @@
 #dice2 {
 	width: 200px;
 	height: 200px;
-	border: 1px solid black;
 	transition: all 0.2s ease;
 	margin-bottom: 6rem;
+	margin: 0 0.25rem 6rem;
 }
 .dice-container button {
 	margin: 0.5rem 0;
