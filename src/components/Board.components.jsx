@@ -1,12 +1,25 @@
 import React from "react";
 import Player from "./Player/Player.components";
 import Dice from "./Dice/Dice.components";
+import BackgroundMusic from "../audio/BGMusic.mp3";
 import "./Board.styles.css";
 class Board extends React.Component {
 	componentDidMount() {
 		this.ChangeActivePlayer();
+		const BGMusic = new Audio(BackgroundMusic);
+		BGMusic.volume = 0.25;
+		document.body.addEventListener("click", () => {
+			BGMusic.play();
+		});
+		BGMusic.addEventListener("ended", () => {
+			BGMusic.play();
+		});
+		document.querySelector("#volume").addEventListener("input", (e) => {
+			BGMusic.volume = e.target.value / 100;
+		});
 	}
-	state = { p1Score: 0, p2Score: 0, p1Temp: 0, p2Temp: 0, playerTurn: 1, pointsToWin: 100 };
+
+	state = { p1Score: 0, p2Score: 0, p1Temp: 0, p2Temp: 0, playerTurn: 1, pointsToWin: 100, gameOver: false };
 	OnScoreChange = (sum) => {
 		const currentPlayer = `p${this.state.playerTurn}`;
 		sum === 0
@@ -23,7 +36,7 @@ class Board extends React.Component {
 				playerTurn: playerTurn === 1 ? 2 : 1,
 				[`${currentPlayer}Temp`]: 0,
 			},
-			this.ChangeActivePlayer
+			this.CheckScore
 		);
 	};
 	ChangeActivePlayer = () => {
@@ -31,18 +44,32 @@ class Board extends React.Component {
 		const passivePlayer = document.querySelector(`.player-${this.state.playerTurn === 1 ? 2 : 1}`);
 		activePlayer.classList.add("active-turn");
 		passivePlayer.classList.remove("active-turn");
-		this.CheckScore();
 	};
 	CheckScore = () => {
 		if (this.state.p1Score >= this.state.pointsToWin) {
-			console.log("P1 Wins");
+			const player = document.querySelector(".player-1");
+			player.querySelector(".player-container").classList.add("display-none");
+			player.querySelector(".winner-container").classList.remove("winner-animation");
+			this.setState({ gameOver: true });
 		} else if (this.state.p2Score >= this.state.pointsToWin) {
-			console.log("P2 Wins");
+			const player = document.querySelector(".player-2");
+			player.querySelector(".player-container").classList.add("display-none");
+			player.querySelector(".winner-container").classList.remove("winner-animation");
+			this.setState({ gameOver: true });
+		} else {
+			this.ChangeActivePlayer();
 		}
 	};
 	ResetGame = () => {
 		this.setState({ p1Score: 0, p2Score: 0, p1Temp: 0, p2Temp: 0, playerTurn: 1 });
 		document.querySelector(".landing-page").classList.remove("z-position", "opacity-hidden");
+		document.querySelectorAll(".player-container").forEach((player) => {
+			player.classList.remove("display-none");
+		});
+		document.querySelectorAll(".winner-container").forEach((player) => {
+			player.classList.add("winner-animation");
+		});
+		this.setState({ gameOver: false });
 	};
 	ChangeThreshold = () => {
 		const input = document.querySelector(".input-threshold");
@@ -75,10 +102,14 @@ class Board extends React.Component {
 					<Player playerNumber={1} tempScore={p1Temp} globalScore={p1Score} />
 
 					<div className="settings-container">
+						<div className="volume-container">
+							<h3 className="volume-text">Music Volume</h3>
+							<input type="range" name="volume" id="volume" defaultValue={25} min={0} max={100} />
+						</div>
 						<button type="button" onClick={this.ResetGame}>
 							<i className="fas fa-undo"></i> Reset Game
 						</button>
-						<Dice onChange={this.OnScoreChange} onClick={this.HoldScore} />
+						<Dice onChange={this.OnScoreChange} onClick={this.HoldScore} gameOver={this.state.gameOver} />
 					</div>
 					<Player playerNumber={2} tempScore={p2Temp} globalScore={p2Score} />
 				</div>

@@ -27,3 +27,6 @@
 .dice-container button {
 	margin: 0.5rem 0;
 }
+.cooldown:hover {
+	background-color: #155;
+}
