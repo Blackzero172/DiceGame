@@ -61,7 +61,7 @@ class Board extends React.Component {
 		}
 	};
 	ResetGame = () => {
-		this.setState({ p1Score: 0, p2Score: 0, p1Temp: 0, p2Temp: 0, playerTurn: 1 });
+		this.setState({ p1Score: 0, p2Score: 0, p1Temp: 0, p2Temp: 0, playerTurn: 1 }, this.ChangeActivePlayer);
 		document.querySelector(".landing-page").classList.remove("z-position", "opacity-hidden");
 		document.querySelectorAll(".player-container").forEach((player) => {
 			player.classList.remove("display-none");
